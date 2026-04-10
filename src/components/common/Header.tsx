@@ -6,7 +6,6 @@ function Header() {
       <div>
         <p className="brand-label">Hotel Aurora</p>
         <h1>Sistema de Reservas de Hotel</h1>
-        <p className="brand-subtitle">Frontend académico con React + TypeScript</p>
       </div>
 
       <nav className="nav">

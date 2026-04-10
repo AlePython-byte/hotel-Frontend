@@ -61,7 +61,7 @@ function HomePage() {
         <div className="sidebar-logo">HT</div>
 
         <nav className="sidebar-nav">
-          <button className="sidebar-btn active">🏠</button>
+          <button className="sidebar-btn active"></button>
           <button className="sidebar-btn">🛎️</button>
           <button className="sidebar-btn">📅</button>
           <button className="sidebar-btn">💳</button>
