@@ -32,6 +32,19 @@ function formatCurrency(value: number): string {
     maximumFractionDigits: 0
   }).format(value);
 }
+function sanitizeNumericValue(value: string): string {
+  return value.replace(/\D/g, "");
+}
+
+function sanitizeEmailValue(value: string): string {
+  return value.replace(/\s/g, "");
+}
+
+function sanitizeNameValue(value: string): string {
+  return value
+    .replace(/^\s+/, "")
+    .replace(/\s{2,}/g, " ");
+}
 
 function NewReservationPage() {
   const navigate = useNavigate();
@@ -72,16 +85,29 @@ function NewReservationPage() {
     };
   }, [guestForm, nights, selectedRoom, state.searchData, totalPrice]);
 
-  function handleChange(
-    event: React.ChangeEvent<HTMLInputElement>
-  ): void {
-    const { name, value } = event.target;
+ function handleChange(
+  event: React.ChangeEvent<HTMLInputElement>
+): void {
+  const { name } = event.target;
+  let { value } = event.target;
 
-    setGuestForm((previous) => ({
-      ...previous,
-      [name]: value
-    }));
+  if (name === "documentNumber" || name === "phone") {
+    value = sanitizeNumericValue(value);
   }
+
+  if (name === "email") {
+    value = sanitizeEmailValue(value);
+  }
+
+  if (name === "fullName") {
+    value = sanitizeNameValue(value);
+  }
+
+  setGuestForm((previous) => ({
+    ...previous,
+    [name]: value
+  }));
+}
 
   function handleSubmit(event: FormEvent<HTMLFormElement>): void {
     event.preventDefault();
@@ -163,11 +189,13 @@ function NewReservationPage() {
 
             <div className="reservation-field">
               <label>Número de documento</label>
-              <input
+             <input
                 type="text"
                 name="documentNumber"
                 value={guestForm.documentNumber}
                 onChange={handleChange}
+                inputMode="numeric"
+                maxLength={12}
                 placeholder="Ej. 1234567890"
                 required
               />
@@ -175,7 +203,7 @@ function NewReservationPage() {
 
             <div className="reservation-field">
               <label>Correo electrónico</label>
-              <input
+           <input
                 type="email"
                 name="email"
                 value={guestForm.email}
@@ -192,6 +220,8 @@ function NewReservationPage() {
                 name="phone"
                 value={guestForm.phone}
                 onChange={handleChange}
+                inputMode="numeric"
+                maxLength={10}
                 placeholder="Ej. 3001234567"
                 required
               />
