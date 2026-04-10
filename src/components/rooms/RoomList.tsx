@@ -1,5 +1,5 @@
-import { ReservationSearchCriteria } from "../../types/reservation";
 import { Room } from "../../types/room";
+import { ReservationSearchCriteria } from "../../types/reservation";
 import RoomCard from "./RoomCard";
 
 interface RoomListProps {
@@ -7,19 +7,19 @@ interface RoomListProps {
   criteria: ReservationSearchCriteria;
 }
 
-function RoomList({ rooms, criteria }: RoomListProps) {
+function RoomList({ rooms }: RoomListProps) {
   if (rooms.length === 0) {
     return (
       <div className="card empty-state">
-        <p>No hay habitaciones disponibles con esos filtros.</p>
+        <p>No hay habitaciones disponibles para los filtros seleccionados.</p>
       </div>
     );
   }
 
   return (
-    <div className="room-grid">
+    <div className="room-list">
       {rooms.map((room) => (
-        <RoomCard key={room.id} room={room} criteria={criteria} />
+        <RoomCard key={room.id} room={room} />
       ))}
     </div>
   );

@@ -9,28 +9,34 @@ import { useReservation } from "../hooks/useReservation";
 
 function ReservationManagementPage() {
   const { reservation, refreshReservation } = useReservation();
-  const [message, setMessage] = useState("Administra la reserva agregando servicios o actualizando su estado.");
+  const [message, setMessage] = useState(
+    "Administra la reserva agregando servicios o actualizando su estado."
+  );
 
-  function handleAddService(service: AdditionalService) {
-    const updatedReservation = addServiceToReservation(service);
+  function handleAddService(service: AdditionalService): void {
+    void (async () => {
+      const updatedReservation = await addServiceToReservation(service);
 
-    if (updatedReservation) {
-      setMessage(`Se agregó el servicio: ${service.name}.`);
-      refreshReservation();
-    }
+      if (updatedReservation) {
+        setMessage(`Se agregó el servicio: ${service.name}.`);
+        await refreshReservation();
+      }
+    })();
   }
 
-  function handleStatusChange(status: ReservationStatus) {
-    const updatedReservation = updateReservationStatus(status);
+  function handleStatusChange(status: ReservationStatus): void {
+    void (async () => {
+      const updatedReservation = await updateReservationStatus(status);
 
-    if (updatedReservation) {
-      setMessage(
-        status === ReservationStatus.CHECKED_IN
-          ? "Check-in realizado correctamente."
-          : "Check-out realizado correctamente."
-      );
-      refreshReservation();
-    }
+      if (updatedReservation) {
+        setMessage(
+          status === ReservationStatus.CHECKED_IN
+            ? "Check-in realizado correctamente."
+            : "Check-out realizado correctamente."
+        );
+        await refreshReservation();
+      }
+    })();
   }
 
   return (
@@ -52,10 +58,16 @@ function ReservationManagementPage() {
           <div className="card">
             <h3>Acciones de estado</h3>
             <div className="button-group">
-              <button className="primary-button" onClick={() => handleStatusChange(ReservationStatus.CHECKED_IN)}>
+              <button
+                className="primary-button"
+                onClick={() => handleStatusChange(ReservationStatus.CHECKED_IN)}
+              >
                 Realizar check-in
               </button>
-              <button className="secondary-button" onClick={() => handleStatusChange(ReservationStatus.CHECKED_OUT)}>
+              <button
+                className="secondary-button"
+                onClick={() => handleStatusChange(ReservationStatus.CHECKED_OUT)}
+              >
                 Realizar check-out
               </button>
             </div>

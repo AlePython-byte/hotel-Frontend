@@ -5,12 +5,17 @@ import { getReservation } from "../services/reservationService";
 export function useReservation() {
   const [reservation, setReservation] = useState<Reservation | null>(null);
 
+  async function refreshReservation(): Promise<void> {
+    const data = await getReservation();
+    setReservation(data);
+  }
+
   useEffect(() => {
-    setReservation(getReservation());
+    void refreshReservation();
   }, []);
 
   return {
     reservation,
-    refreshReservation: () => setReservation(getReservation())
+    refreshReservation
   };
 }
