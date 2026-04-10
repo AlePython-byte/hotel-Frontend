@@ -1,0 +1,71 @@
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  background: linear-gradient(135deg, #1e1b4b, #7c3aed);
+  color: white;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.brand-label {
+  margin: 0;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.85;
+}
+
+.brand-subtitle {
+  margin: 0.3rem 0 0;
+  opacity: 0.85;
+}
+
+.header h1 {
+  margin: 0.2rem 0;
+}
+
+.nav {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.nav a {
+  padding: 0.65rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.nav a.active {
+  background: white;
+  color: #5b21b6;
+  font-weight: 600;
+}
+
+.main-content {
+  flex: 1;
+  width: min(1120px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 2rem 0 2.5rem;
+}
+
+.footer {
+  padding: 1rem 2rem 2rem;
+  color: #5f6c7b;
+  text-align: center;
+}
+
+.button-group {
+  display: flex;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}

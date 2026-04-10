@@ -1,0 +1,34 @@
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.form-group label {
+  font-weight: 600;
+}
+
+.form-group input,
+.form-group select {
+  border: 1px solid #d8deeb;
+  border-radius: 12px;
+  padding: 0.8rem 0.9rem;
+  background: #fcfdff;
+}
+
+.search-button {
+  align-self: end;
+}
+
+.booking-preview {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 14px;
+  background: #f8f5ff;
+}

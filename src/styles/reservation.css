@@ -1,0 +1,66 @@
+.summary-card {
+  margin-bottom: 1rem;
+}
+
+.summary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.5rem 1rem;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.status-created {
+  background: #e0edff;
+  color: #1d4ed8;
+}
+
+.status-checked_in {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.status-checked_out {
+  background: #ede9fe;
+  color: #6d28d9;
+}
+
+.status-cancelled {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.service-card {
+  padding: 1rem;
+  border-radius: 14px;
+  background: #faf7ff;
+  border: 1px solid #ece7ff;
+}
+
+.management-message {
+  margin-top: 1rem;
+  color: #5b21b6;
+}

@@ -1,0 +1,13 @@
+.invoice-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.invoice-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid #eceff5;
+}
